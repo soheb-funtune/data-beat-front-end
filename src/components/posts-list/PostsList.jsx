@@ -18,7 +18,7 @@ const PostsList = () => {
     };
     fetchData();
   }, [page]);
-
+  // infinite Scoll Logic
   const handleInfiniteScroll = async () => {
     console.log(
       "scroll",
