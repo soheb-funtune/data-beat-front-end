@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./first-task.css";
 
 const FirstTask = () => {
@@ -16,7 +16,7 @@ const FirstTask = () => {
     e.preventDefault();
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = useCallback((e) => {
     e.preventDefault();
     console.log({ e });
     let draggedItem = document.querySelector(".dragging");
@@ -24,10 +24,10 @@ const FirstTask = () => {
       console.log({ draggedItem });
       let clone = draggedItem.cloneNode(true);
       clone.setAttribute("id", Date.now()); // Set a unique identifier for the clone
-      e.target.appendChild(clone);
+      e.target.appendChild(draggedItem);
       draggedItem.classList.remove("dragging");
     }
-  };
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,12 +43,7 @@ const FirstTask = () => {
     <div>
       FirstTask
       <div className="grid grid-cols-2 gap-5">
-        <form
-          onSubmit={handleSubmit}
-          className="container-css"
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-        >
+        <form onSubmit={handleSubmit}>
           <div className="flex justify-end">
             <button
               type="submit"
@@ -57,9 +52,14 @@ const FirstTask = () => {
               Submit
             </button>
           </div>
+          <div
+            className="container-css pb-8 min-h-[50vh]"
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+          ></div>
         </form>
         <div
-          className="container-css"
+          className="container-css "
           // onDragOver={handleDragOver}
           // onDrop={handleDrop}
         >
@@ -70,7 +70,11 @@ const FirstTask = () => {
             onDragEnd={handleDragEnd}
           >
             <label htmlFor="file">Select File</label>
-            <input type="file" id="file" placeholder="Select Your File" />
+            <input
+              type="file"
+              // id="file"
+              placeholder="Select Your File"
+            />
           </div>
           <div
             className="draggable"
@@ -79,7 +83,11 @@ const FirstTask = () => {
             onDragEnd={handleDragEnd}
           >
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="Enter Your Email" />
+            <input
+              type="email"
+              //  id="email"
+              placeholder="Enter Your Email"
+            />
           </div>
           <div
             className="draggable"
@@ -90,7 +98,7 @@ const FirstTask = () => {
             <label htmlFor="password">Password</label>
             <input
               type="password"
-              id="password"
+              // id="password"
               placeholder="Enter Your Password"
             />
           </div>
@@ -101,7 +109,11 @@ const FirstTask = () => {
             onDragEnd={handleDragEnd}
           >
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" placeholder="Enter Your Name" />
+            <input
+              type="text"
+              // id="name"
+              placeholder="Enter Your Name"
+            />
           </div>
         </div>
       </div>
