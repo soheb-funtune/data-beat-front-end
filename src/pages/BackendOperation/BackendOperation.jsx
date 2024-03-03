@@ -1,8 +1,7 @@
-// components/Blog.js
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
 import PostsList from "./PostsList";
 import NewPostForm from "./NewPostForm";
+import { Link } from "react-router-dom";
 
 const BackendOperation = () => {
   const [posts, setPosts] = useState([]);
@@ -53,9 +52,19 @@ const BackendOperation = () => {
   };
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-semibold  text-gray-800 mb-4">My Blog</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:overflow-hidden">
+    <div className="  ">
+      <div className="flex justify-between px-5 shadow-sm items-center py-4 sticky top-0 z-10 bg-white">
+        <h3 className="text-green-500 font-semibold text-xl ">
+          Third Task API Operation
+        </h3>
+        <Link
+          className="underline text-blue-700 text-center px-2 rounded-lg "
+          to={"/"}
+        >
+          Go-To Second Task
+        </Link>
+      </div>
+      <div className="container grid grid-cols-1 lg:grid-cols-2 lg:overflow-hidden mx-auto mt-2">
         <NewPostForm onSubmit={handleCreatePost} />
         <PostsList posts={posts} onDelete={handleDelete} />
       </div>

@@ -17,7 +17,7 @@ const NewPostForm = ({ onSubmit }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full h-max static lg:relative mx-auto bg-white shadow-md rounded-lg overflow-hidden"
+      className="w-full h-max relative  my-auto lg:sticky lg:top-0 mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
     >
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800">Create New Post</h2>
