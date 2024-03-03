@@ -10,6 +10,7 @@ import RegisterPage from "./components/register-page/RegisterPage";
 import { useContextState } from "./state/ContextProvider";
 import Home from "./pages/Home/Home";
 import BackendOperation from "./pages/BackendOperation/BackendOperation";
+import FirstTask from "./pages/first-task/FirstTask";
 
 const RoutesPage = () => {
   const { isAuthenticated } = useContextState();
@@ -26,6 +27,10 @@ const RoutesPage = () => {
     {
       path: "register",
       element: <RegisterPage />,
+    },
+    {
+      path: "first-task",
+      element: <FirstTask />,
     },
     {
       path: "back-end-operation",

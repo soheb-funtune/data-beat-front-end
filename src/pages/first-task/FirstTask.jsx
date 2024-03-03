@@ -1,11 +1,110 @@
-import React from "react";
-import DragAndDropList from "./drag-and-drop/drag-and-drop";
+import React, { useState } from "react";
+import "./first-task.css";
 
 const FirstTask = () => {
+  const [previewItem, setPreviewItem] = useState();
+
+  const handleDragStart = (e) => {
+    e.target.classList.add("dragging");
+  };
+
+  const handleDragEnd = (e) => {
+    e.target.classList.remove("dragging");
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    console.log({ e });
+    let draggedItem = document.querySelector(".dragging");
+    if (draggedItem) {
+      console.log({ draggedItem });
+      let clone = draggedItem.cloneNode(true);
+      clone.setAttribute("id", Date.now()); // Set a unique identifier for the clone
+      e.target.appendChild(clone);
+      draggedItem.classList.remove("dragging");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const formObj = {};
+    formData.forEach((value, key) => {
+      formObj[key] = value;
+    });
+    console.log(formObj);
+  };
+
   return (
     <div>
       FirstTask
-      <DragAndDropList />
+      <div className="grid grid-cols-2 gap-5">
+        <form
+          onSubmit={handleSubmit}
+          className="container-css"
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+        >
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className="bg-green-800 p-2 rounded-lg text-white float-end mb-3 "
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+        <div
+          className="container-css"
+          // onDragOver={handleDragOver}
+          // onDrop={handleDrop}
+        >
+          <div
+            className="draggable"
+            draggable="true"
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            <label htmlFor="file">Select File</label>
+            <input type="file" id="file" placeholder="Select Your File" />
+          </div>
+          <div
+            className="draggable"
+            draggable="true"
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" placeholder="Enter Your Email" />
+          </div>
+          <div
+            className="draggable"
+            draggable="true"
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter Your Password"
+            />
+          </div>
+          <div
+            className="draggable"
+            draggable="true"
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            <label htmlFor="name">Name</label>
+            <input type="text" id="name" placeholder="Enter Your Name" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import RoutesPage from "./router";
 import { useContextState } from "./state/ContextProvider";
-import Header from "./components/Header/Header";
 
 function App() {
   const { dispatch } = useContextState();
