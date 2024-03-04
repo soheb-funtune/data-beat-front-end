@@ -31,7 +31,7 @@ export const MuiModal = ({ opne, setOpen, itemsList, handleInputElements }) => {
       >
         <Box sx={style}>
           <h2>Preview Form</h2>
-          <Box className="grid grid-cols-2">
+          <Box className="grid grid-cols-1 lg:grid-cols-2">
             {itemsList?.map((item, i) => handleInputElements(item))}
           </Box>
           <div className="flex justify-end px-4">
