@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { MuiModal } from "../../components/MuiModal/MuiModal";
 
 const FirstTask = () => {
-  const [previewItem, setPreviewItem] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   const [itemsList, setItemsList] = useState([]);
 
   const handleDragStart = (e) => {
@@ -154,7 +153,7 @@ const FirstTask = () => {
           ))}
         </div>
       </div>
-      {showModal && (
+      {itemsList?.length > 0 && showModal && (
         <MuiModal
           open={showModal}
           setOpen={setShowModal}
