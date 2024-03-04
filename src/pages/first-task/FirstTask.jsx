@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MuiModal } from "../../components/MuiModal/MuiModal";
 
 const FirstTask = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [itemsList, setItemsList] = useState([]);
 
   const handleDragStart = (e) => {
@@ -118,6 +118,18 @@ const FirstTask = () => {
         <form onSubmit={handleSubmit} className="container-css  col-span-[1.5]">
           {" "}
           <div className="flex justify-end">
+            <button
+              onClick={() =>
+                setItemsList((pre) => {
+                  let arr = [...pre];
+                  console.log(arr?.pop());
+                  return arr;
+                })
+              }
+              className="bg-green-800 p-2 rounded-lg text-white float-end mb-3 mr-1 "
+            >
+              Undo
+            </button>
             <button
               onClick={() => setShowModal(true)}
               type="submit"
