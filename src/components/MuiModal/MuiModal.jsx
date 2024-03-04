@@ -1,6 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+
+import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 
 const style = {
@@ -28,7 +29,17 @@ export const MuiModal = ({ opne, setOpen, itemsList, handleInputElements }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <h2>Preview Form</h2>
           {itemsList?.map((item, i) => handleInputElements(item))}
+          <>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => handleClose()}
+            >
+              Ok
+            </Button>
+          </>
         </Box>
       </Modal>
     </div>

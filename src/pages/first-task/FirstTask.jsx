@@ -24,7 +24,7 @@ const FirstTask = () => {
     switch (text) {
       case "file":
         return (
-          <div className="draggable">
+          <div className={`draggable `}>
             <label>Select File</label>
             <input type="file" id={Date.now()} placeholder="Select File" />
           </div>
@@ -137,14 +137,14 @@ const FirstTask = () => {
           </div>
         </form>
         <div
-          className="container-css col-span-1"
+          className="container-css bg-white border-black border-solid col-span-1"
           // onDragOver={handleDragOver}
           // onDrop={handleDrop}
         >
           {inputLists?.map((item, i) => (
             <div
               key={i}
-              className="draggable border-dashed"
+              className="draggable border  mt-2"
               draggable="true"
               onDragStart={handleDragStart}
               onDragEnd={handleDragEnd}
