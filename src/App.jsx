@@ -5,17 +5,18 @@ import { useContextState } from "./state/ContextProvider";
 
 function App() {
   const { dispatch } = useContextState();
+  let userData = localStorage.getItem("userData");
+  userData = JSON.parse(userData);
   useEffect(() => {
-    let userData = localStorage.getItem("userData");
-    userData = JSON.parse(userData);
-    dispatch({
-      type: "LOGIN",
-      payload: {
-        user: userData?.email,
-        token: userData?.token,
-      },
-    });
-  }, []);
+    userData?.token &&
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          user: userData?.email,
+          token: userData?.token,
+        },
+      });
+  }, [userData?.token]);
   return (
     <>
       <RoutesPage />

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
   Route,
+  useNavigate,
   Link,
 } from "react-router-dom";
 import Login from "./components/login-page/Login";
@@ -13,12 +14,17 @@ import BackendOperation from "./pages/BackendOperation/BackendOperation";
 import FirstTask from "./pages/first-task/FirstTask";
 
 const RoutesPage = () => {
+  const [isAuthentication, setAuthentication] = useState(false);
   const { isAuthenticated } = useContextState();
 
+  useEffect(() => {
+    console.log(isAuthenticated);
+    setAuthentication(isAuthenticated);
+  }, [isAuthenticated]);
   const router = createBrowserRouter([
     {
       path: "/",
-      element: isAuthenticated ? <Home /> : <Login />,
+      element: isAuthentication ? <Home /> : <Login />,
     },
     {
       path: "login",
@@ -30,11 +36,11 @@ const RoutesPage = () => {
     },
     {
       path: "first-task",
-      element: <FirstTask />,
+      element: isAuthentication ? <FirstTask /> : <Login />,
     },
     {
       path: "back-end-operation",
-      element: isAuthenticated ? <BackendOperation /> : <Login />,
+      element: isAuthentication ? <BackendOperation /> : <Login />,
     },
   ]);
 

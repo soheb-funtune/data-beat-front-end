@@ -43,7 +43,7 @@ const Login = () => {
             token: data.token,
           },
         });
-        navigate("/");
+        navigate("/first-task");
       } else {
         setError("Invalid email or password.");
       }
