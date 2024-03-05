@@ -8,6 +8,7 @@ function App() {
   let userData = localStorage.getItem("userData");
   userData = JSON.parse(userData);
   useEffect(() => {
+    console.log({ userData });
     userData?.token &&
       dispatch({
         type: "LOGIN",

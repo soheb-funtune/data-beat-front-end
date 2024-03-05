@@ -29,11 +29,12 @@ const Login = () => {
       if (res.ok) {
         const data = await res.json();
         // Dispatch action to update authentication state based on response
+        console.log({ data });
         localStorage.setItem(
           "userData",
           JSON.stringify({
-            user: data?.email,
-            token: data?.token,
+            user: data?.data?.email,
+            token: data?.data?.token,
           })
         );
         dispatch({
